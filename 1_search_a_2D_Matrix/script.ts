@@ -9,7 +9,10 @@ const searchMatrix = (matrix: number[][], target: number): boolean => {
   let foundArr: number[] = [];
 
   while (matrixStart <= matrixEnd) {
-    if (target > matrix[matrixMid][matrix[0].length - 1]) {
+    if (matrixStart === matrixEnd) {
+      foundArr = matrix[matrixStart];
+      break;
+    } else if (target > matrix[matrixMid][matrix[0].length - 1]) {
       matrixStart = matrixMid + 1;
       matrixMid = Math.floor((matrixStart + matrixEnd) / 2);
     } else if (target < matrix[matrixMid][0]) {

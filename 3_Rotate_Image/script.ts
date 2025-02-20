@@ -4,31 +4,30 @@ let m: number[][] = [
   [13, 3, 6, 7],
   [15, 14, 12, 16],
 ];
-let a = [
-  [ 15, 13, 2, 5 ],
-  [ 14, 4, 8, 1 ],
-  [ 12, 3, 6, 9 ],
-  [ 16, 7, 10, 11 ]
-]
+
 // Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
 
 const rotate = (matrix: number[][]): void => {
   let tempNum;
-  let lastIdx: number = matrix[0].length - 1;
-  for (let i = 0; i < Math.floor(matrix[0].length/2); i++) {
-    for (let j = i; j < Math.floor(matrix[0].length/2); j++) {
-      tempNum = matrix[lastIdx - i][j];
-      matrix[lastIdx - i][j] = matrix[lastIdx - j][lastIdx - i];
-      
-      matrix[lastIdx - j][lastIdx - i] = matrix[i][lastIdx - j];
-      matrix[i][lastIdx - j] = matrix[j][i];
-      matrix[j][i] = tempNum;
-      tempNum = null;
+
+  let leftTop = 0;
+  let rightBottom = matrix[0].length - 1;
+
+  while (leftTop < rightBottom) {
+    for (let i = 0; i < rightBottom - leftTop; i++) {
+      tempNum = matrix[rightBottom][leftTop + i];
+      matrix[rightBottom][leftTop + i] = matrix[rightBottom - i][rightBottom];
+      matrix[rightBottom][rightBottom-i] = matrix[leftTop+i][rightBottom];
+      matrix[leftTop][rightBottom-i] = matrix[leftTop][leftTop+i];
+      matrix[leftTop][leftTop+i] = tempNum;
+      console.log(111111, matrix[leftTop][leftTop+i], i);
+
     }
+    leftTop++;
+    rightBottom--;
   }
 
   console.log(matrix);
 };
 
 rotate(m);
-

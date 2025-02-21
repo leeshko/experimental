@@ -9,7 +9,6 @@ let m: number[][] = [
 
 const rotate = (matrix: number[][]): void => {
   let tempNum;
-
   let leftTop = 0;
   let rightBottom = matrix[0].length - 1;
 
@@ -17,17 +16,13 @@ const rotate = (matrix: number[][]): void => {
     for (let i = 0; i < rightBottom - leftTop; i++) {
       tempNum = matrix[rightBottom][leftTop + i];
       matrix[rightBottom][leftTop + i] = matrix[rightBottom - i][rightBottom];
-      matrix[rightBottom][rightBottom-i] = matrix[leftTop+i][rightBottom];
-      matrix[leftTop][rightBottom-i] = matrix[leftTop][leftTop+i];
-      matrix[leftTop][leftTop+i] = tempNum;
-      console.log(111111, matrix[leftTop][leftTop+i], i);
-
+      matrix[rightBottom - i][rightBottom] = matrix[leftTop][rightBottom - i];
+      matrix[leftTop][rightBottom - i] = matrix[leftTop + i][leftTop];
+      matrix[leftTop + i][leftTop] = tempNum;
     }
     leftTop++;
     rightBottom--;
   }
-
-  console.log(matrix);
 };
 
 rotate(m);

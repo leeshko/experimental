@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon ./3_Rotate_Image/script.ts",
+    "dev": "nodemon ./2_Koko_Eating_Bananas/script.ts",
     "serve": "npm run build && functions-framework --target=helloWorld1"
   }
 }

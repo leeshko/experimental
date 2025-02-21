@@ -1,30 +1,31 @@
-const piles = [25,10,23,4];
-const h = 4;
+const piles = [1, 4, 3, 2];
+const h = 9;
+//2
 
 const minEatingSpeed = (piles: number[], h: number): number => {
-  let min = 1;
-  let max = Math.max(...piles);
-  let midAppetite = Math.floor((min + max) / 2);
-  let perHour = max;
+  let left = 1;
+  let right = Math.max(...piles);
+  let speed = right;
+  let mid;
 
-  if (piles.reduce((acc, p) => acc + p, 0) <= h) return 1;
+  while (left <= right) {
+    let totalHours = 0;
+    mid = Math.floor((left + right) / 2);
 
-  while (min <= max) {
-    let time = 0;
     for (let i = 0; i < piles.length; i++) {
-      time += Math.ceil(piles[i] / midAppetite);
+      totalHours += Math.ceil(piles[i] / mid);
     }
-    
 
-    if (time >= h) {
-      min +=1;
-    } else if (time < h) {
-      perHour = midAppetite;
-      max -=1;
+
+    if (totalHours > h) {
+      left = mid + 1;
+    } else {
+      speed = mid;
+      right = mid - 1;
     }
   }
 
-  return perHour;
+  return speed;
 };
 
 console.log(minEatingSpeed(piles, h));

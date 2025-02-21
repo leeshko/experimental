@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon ./2_Koko_Eating_Bananas/script.ts",
+    "dev": "nodemon ./4_Find_Minimum_in_Rotated_Sorted_Array/script.ts",
     "serve": "npm run build && functions-framework --target=helloWorld1"
   }
 }

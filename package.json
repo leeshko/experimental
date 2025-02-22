@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon ./5_Search_in_Rotated_Sorted_Array/script.ts",
+    "dev": "nodemon",
     "serve": "npm run build && functions-framework --target=helloWorld1"
   }
 }
